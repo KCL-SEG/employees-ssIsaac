@@ -2,14 +2,33 @@
 """ENTER YOUR SOLUTION HERE!"""
 
 class Employee:
-    def __init__(self, name):
+    def __init__(self, name, pay, contract, number_of_hours_worked, commmission, number_of_contracts_landed):
         self.name = name
+        self.pay = pay
+        self.contract = contract # contract type
+        self.number_of_hours_worked = number_of_hours_worked
+        self.comission = commmission
+        self.number_of_contracts_landed = number_of_contracts_landed
+
+    def get_contract(self):
+        return self.contract
 
     def get_pay(self):
-        pass
+        if (self.number_of_hours_worked > 0):
+            self.pay = self.pay * self.number_of_hours_worked
+        return self.pay
+    
+    def get_comission(self):
+        if (self.number_of_contracts_landed > 0):
+            self.comission = self.comission * self.number_of_contracts_landed
+        return self.comission
+
+    def get_total_pay(self):
+        total_pay = self.get_pay() + self.get_comission()
+        return total_pay
 
     def __str__(self):
-        return self.name
+        print(f"{self.name} works on a contract of {self.number_of_hours_worked} hours at {self.pay} and receives a commission for {self.number_of_contracts_landed} contract(s) at {self.contract}/contract. Their total pay is {self.get_total_pay()} ")
 
 
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
